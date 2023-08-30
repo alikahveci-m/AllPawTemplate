@@ -16,45 +16,45 @@
                             <div class="checkbox-container">
                                 <label class="containerss">
                                     Golden Retriever
-                                    <input type="checkbox" checked="checked">
+                                    <input type="checkbox" checked="checked" data-filter="breed" value="Golden Retriever">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     Labrador Retriever
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value="Labrador Retriever">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     German Shepherd
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value=" German Shepherd">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     Bulldog
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value="Bulldog">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     Maltipoo
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value="Maltipoo">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     Poodle
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value="Poodle">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     Morkie
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value="Morkie">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     Chow Chow
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="breed" value="Chow Chow">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="containerss">
+                                <label class="containerss" data-filter="breed" value="Pomeranian">
                                     Pomeranian
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
@@ -79,27 +79,27 @@
                             <div class="checkbox-container">
                                 <label class="containerss">
                                     1 Yaşdan Küçük
-                                    <input type="checkbox" checked="checked">
+                                    <input type="checkbox" checked="checked" data-filter="age" value="0">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     1 - 2 Yaş
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="age" value="1">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     2 - 3 Yaş
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="age" value="2">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     3 - 5 Yaş
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="age" value="3">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
                                     5 Yaşdan Büyük
-                                    <input type="checkbox">
+                                    <input type="checkbox" data-filter="age" value="5">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -281,6 +281,7 @@
 
         // Tür filtrelerini al
         const breedCheckboxes = document.querySelectorAll('input[type="checkbox"][data-filter="breed"]');
+        selectedFilters.breeds = [];
         breedCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 selectedFilters.breeds.push(checkbox.value);
@@ -289,6 +290,7 @@
 
         // Yaş filtrelerini al
         const ageCheckboxes = document.querySelectorAll('input[type="checkbox"][data-filter="age"]');
+        selectedFilters.ages = [];
         ageCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 selectedFilters.ages.push(checkbox.value);
@@ -302,7 +304,6 @@
             selectedFilters.sellerType = 'petshop';
         }
 
-        // Bu filtreleri bir JSON olarak endpoint'e gönder
         fetch('/Home/ApplyFilters', {
             method: 'POST',
             headers: {
@@ -310,13 +311,13 @@
             },
             body: JSON.stringify(selectedFilters)
         })
-        .then(response => response.json())
-        .then(data => {
-            // Endpoint'ten dönen Advert listesini kullanarak sayfayı güncelleme
-            // Örnek olarak, yeni filtrelenmiş liste ile sayfa içeriğini güncelleyebilirsiniz
-        })
-        .catch(error => {
-            console.error('Filtre uygulanırken hata oluştu:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                // Endpoint'ten dönen Advert listesini kullanarak sayfayı güncelleme
+                // Örnek olarak, yeni filtrelenmiş liste ile sayfa içeriğini güncelleyebilirsiniz
+            })
+            .catch(error => {
+                console.error('Filtre uygulanırken hata oluştu:', error);
+            });
     }
 </script>
