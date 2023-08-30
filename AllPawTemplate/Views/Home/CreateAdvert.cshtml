@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "CreateAdvert";
+    Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
+}
+
+<div class="login-section pt-120 pb-120">
+    <div class="container">
+        <div class="row d-flex justify-content-center g-4">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <div class="form-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".2s">
+                    <div class="form-title">
+                        <h3>İlan Ver</h3>
+                        
+                    </div>
+                    <form class="w-100">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-inner">
+                                    <label>Türü *</label>
+                                    <input type="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-inner">
+                                    <label>Yaşı *</label>
+                                    <input type="password" name="password" id="password" placeholder="Şifre" />
+                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-inner">
+                                    <label>Cinsiyeti *</label>
+                                    <input type="password" name="password" id="password" placeholder="Şifre" />
+                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-inner">
+                                    <label>Eğitim Durumu *</label>
+                                    <select class="defult-select-drowpown" id="eyes-dropdown">
+                                        <option selected value="0">Eğitim Durumunu Seçiniz.</option>
+                                        <option value="1">Eğitimli</option>
+                                        <option value="2">Eğitimsiz</option>
+                                        
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <button class="account-btn">Patile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

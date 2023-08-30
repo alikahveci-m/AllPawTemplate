@@ -1,0 +1,322 @@
+﻿@using AllPawTemplate.Dtos
+@model List<Advert>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
+}
+
+<div class="shop-page pt-120 mb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop-sidebar">
+                    <div class="shop-widget">
+                        <div class="check-box-item">
+                            <h5 class="shop-widget-title">Tür</h5>
+                            <div class="checkbox-container">
+                                <label class="containerss">
+                                    Golden Retriever
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Labrador Retriever
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    German Shepherd
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Bulldog
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Maltipoo
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Poodle
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Morkie
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Chow Chow
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Pomeranian
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-widget">
+                        <h5 class="shop-widget-title">Fiyat Aralığı</h5>
+                        <div class="range-widget">
+                            <div id="slider-range" class="price-filter-range"></div>
+                            <div class="mt-25 d-flex justify-content-between gap-4">
+                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='500');" id="min_price" class="price-range-field" />
+                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='20000');" id="max_price" class="price-range-field" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-widget">
+                        <div class="check-box-item">
+                            <h5 class="shop-widget-title">Yaşı</h5>
+                            <div class="checkbox-container">
+                                <label class="containerss">
+                                    1 Yaşdan Küçük
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    1 - 2 Yaş
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    2 - 3 Yaş
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    3 - 5 Yaş
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    5 Yaşdan Büyük
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-widget">
+                        <div class="check-box-item">
+                            <h5 class="shop-widget-title">Kimden</h5>
+                            <div class="checkbox-container">
+                                <label class="containerss">
+                                    Sahibinden
+                                    <input type="checkbox" id="sahibindenCheckbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Petshop'dan
+                                    <input type="checkbox" id="petshopCheckbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        const sahibindenCheckbox = document.getElementById('sahibindenCheckbox');
+                        const petshopCheckbox = document.getElementById('petshopCheckbox');
+
+                        sahibindenCheckbox.addEventListener('change', function () {
+                            if (sahibindenCheckbox.checked) {
+                                petshopCheckbox.checked = false;
+                            }
+                        });
+
+                        petshopCheckbox.addEventListener('change', function () {
+                            if (petshopCheckbox.checked) {
+                                sahibindenCheckbox.checked = false;
+                            }
+                        });
+                    </script>
+                    <div class="shop-widget">
+                        <div class="check-box-item">
+                            <h5 class="shop-widget-title">Şehir</h5>
+                            <div class="checkbox-container">
+                                <label class="containerss">
+                                    İstanbul Avrupa
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    İstanbul Anadolu
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    İzmir
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Ankara
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="containerss">
+                                    Kastamonu
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row mb-50">
+                    <div class="col-lg-12">
+                        <div class="multiselect-bar">
+                            <h6>İlanlar</h6>
+                            <div class="multiselect-area">
+                                <div class="single-select">
+
+                                    <select class="defult-select-drowpown" id="color-dropdown">
+                                        <option selected value="0">Sayfada Listeleme Sayısı</option>
+                                        <option value="1">10</option>
+                                        <option value="2">20</option>
+                                        <option value="3">30</option>
+
+                                    </select>
+                                </div>
+                                <div class="single-select two">
+                                    <select class="defult-select-drowpown" id="eyes-dropdown">
+                                        <option selected value="0">Şehir seçiniz</option>
+                                        <option value="1">Adana</option>
+                                        <option value="2">Adıyaman</option>
+                                        <option value="2">Afyon</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        @foreach (var advert in Model)
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="collection-card">
+                                    <div class="collection-img" style="background-color:white">
+                                        <img class="img-gluid" src="@advert.AdvertPhoto" width="250" , height="250" alt="">
+                                        <div class="view-dt-btn">
+                                            <div class="plus-icon">
+                                                <i class="bi bi-plus"></i>
+                                            </div>
+                                            <a href="shop-details.html">View Details</a>
+                                        </div>
+                                        <ul class="cart-icon-list">
+                                            <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
+                                            <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="collection-content text-center">
+                                        <h4><a href="shop-details.html">@advert.Title</a></h4>
+                                        <div class="price">
+                                            <h6>@advert.Price</h6>
+                                            <del>@advert.Price</del>
+                                        </div>
+                                        <div class="review">
+                                            <ul>
+                                                <li><i class="bi bi-star-fill"></i></li>
+                                                <li><i class="bi bi-star-fill"></i></li>
+                                                <li><i class="bi bi-star-fill"></i></li>
+                                                <li><i class="bi bi-star-fill"></i></li>
+                                                <li><i class="bi bi-star-fill"></i></li>
+                                            </ul>
+                                            <span>Oylama Sayısı</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="row pt-70">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <div class="paginations-area">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-arrow-left-short"></i></a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-arrow-right-short"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button onclick="applyFilters()">Filtrele</button>
+
+<script>
+    function applyFilters() {
+        // Seçilen tüm filtreleri al
+        const selectedFilters = {
+            breeds: [], // Seçilen türlerin burada saklanması
+            priceRange: {
+                min: document.getElementById('min_price').value,
+                max: document.getElementById('max_price').value
+            },
+            ages: [], // Seçilen yaş aralıklarının burada saklanması
+            sellerType: ''
+        };
+
+        // Tür filtrelerini al
+        const breedCheckboxes = document.querySelectorAll('input[type="checkbox"][data-filter="breed"]');
+        breedCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedFilters.breeds.push(checkbox.value);
+            }
+        });
+
+        // Yaş filtrelerini al
+        const ageCheckboxes = document.querySelectorAll('input[type="checkbox"][data-filter="age"]');
+        ageCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedFilters.ages.push(checkbox.value);
+            }
+        });
+
+        // Kimden filtresini al
+        if (document.getElementById('sahibindenCheckbox').checked) {
+            selectedFilters.sellerType = 'sahibinden';
+        } else if (document.getElementById('petshopCheckbox').checked) {
+            selectedFilters.sellerType = 'petshop';
+        }
+
+        // Bu filtreleri bir JSON olarak endpoint'e gönder
+        fetch('/Home/ApplyFilters', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(selectedFilters)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Endpoint'ten dönen Advert listesini kullanarak sayfayı güncelleme
+            // Örnek olarak, yeni filtrelenmiş liste ile sayfa içeriğini güncelleyebilirsiniz
+        })
+        .catch(error => {
+            console.error('Filtre uygulanırken hata oluştu:', error);
+        });
+    }
+</script>

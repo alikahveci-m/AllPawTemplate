@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hepsi Pati PetShop</title>
+
+    <link rel="icon" href="~/html-files/assets/images/sm-logo.svg" type="image/gif" sizes="20x20">
+
+
+    <!-- css file link -->
+    <link rel="stylesheet" href="~/html-files/assets/css/all.css">
+    <link rel="stylesheet" href="~/html-files/assets/css/animate.css">
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="~/html-files/assets/css/bootstrap.min.css">
+
+    <!-- box-icon -->
+    <link rel="stylesheet" href="~/html-files/assets/css/boxicons.min.css">
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="~/html-files/assets/css/bootstrap-icons.css">
+
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="~/html-files/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/html-files/assets/css/aos.css">
+
+    <!-- swiper-slide -->
+    <link rel="stylesheet" href="~/html-files/assets/css/swiper-bundle.css">
+
+    <!-- nice-select -->
+    <link rel="stylesheet" href="~/html-files/assets/css/nice-select.css">
+
+    <!-- magnefic popup css -->
+    <link rel="stylesheet" href="~/html-files/assets/css/magnific-popup.css">
+
+    <!-- animate css -->
+    <link rel="stylesheet" href="~/html-files/assets/css/jquery.fancybox.min.css">
+
+    <!-- odometer css -->
+    <link rel="stylesheet" href="~/html-files/assets/css/odometer.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="~/html-files/assets/css/datepicker.min.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="~/html-files/assets/css/uiicss.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="~/html-files/assets/css/style.css">
+
+</head>
+
+<body>
+
+
+   @*  <!-- ========== Top Bar Start============= -->
+    
+    @await Html.PartialAsync("TopBarPartial.cshtml")
+
+    <!-- ========== Top Bar End============= --> *@
+
+    <!-- ========== header============= -->
+    
+    @await Html.PartialAsync("HeaderPartial.cshtml")
+
+    <!-- ========== header end============= -->
+
+    @* <!-- ========== Breadcumb Start============= -->
+    
+    @await Html.PartialAsync("BreadCumbPartial.cshtml")
+
+    <!-- ========== Breadcumb end============= --> *@
+
+    <!-- ========== Faq Area Start============= -->
+
+    @RenderBody()  
+
+    <!-- ========== Faq Area End============= -->
+    <!-- ========== Footer Area Start============= -->
+    @await Html.PartialAsync("FooterPartial.cshtml")
+
+    <!-- ========== Footer Area end============= -->
+
+
+    <script src="~/html-files/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/html-files/assets/js/jquery-ui.js"></script>
+    <script src="~/html-files/assets/js/jquery.timepicker.min.js"></script>
+    <script src="~/html-files/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/html-files/assets/js/swiper-bundle.min.js"></script>
+    <script src="~/html-files/assets/js/aos.js"></script>
+    <script src="~/html-files/assets/js/jquery.nice-select.js"></script>
+    <script src="~/html-files/assets/js/jquery.fancybox.min.js"></script>
+    <script src="~/html-files/assets/js/morphext.min.js"></script>
+    <script src="~/html-files/assets/js/odometer.min.js"></script>
+    <script src="~/html-files/assets/js/jquery.marquee.min.js"></script>
+    <script src="~/html-files/assets/js/viewport.jquery.js"></script>
+    <script src="~/html-files/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/html-files/assets/js/SmoothScroll.js"></script>
+    <script src="~/html-files/assets/js/jquery.nice-number.min.js"></script>
+    <script src="~/html-files/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/html-files/assets/js/masonry.pkgd.min.js"></script>
+    <script src="~/html-files/assets/js/main.js"></script>
+
+</body>
+</html>

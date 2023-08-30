@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
+}
+
+<div class="login-section pt-120 pb-120">
+    <div class="container">
+        <div class="row d-flex justify-content-center g-4">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <div class="form-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".2s">
+                    <div class="form-title">
+                        <h3>Giriş Yap</h3>
+                        <p>Hâlâ Sitemize Üye Değil Misin ? <a href="/PetShopHome/SignUp/">Kayıt Ol</a></p>
+                    </div>
+                    <form class="w-100">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-inner">
+                                    <label>Email Adresinizi Giriniz *</label>
+                                    <input type="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-inner">
+                                    <label>Şifrenizi Giriniz *</label>
+                                    <input type="password" name="password" id="password" placeholder="Şifre" />
+                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-agreement form-inner d-flex justify-content-between flex-wrap">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="html">
+                                        <label for="html">Beni Hatırla</label>
+                                    </div>
+                                    <a href="#" class="forgot-pass">Şifemi Unuttum?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="account-btn">Giriş Yap</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
