@@ -1,6 +1,8 @@
 using AllPawTemplate.Models.DapperContext;
 using AllPawTemplate.Repositories.AdvertRepository;
+using AllPawTemplate.Repositories.CityRepository;
 using AllPawTemplate.Repositories.UserRepository;
+using AllPawTemplate.Services.HomeService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IAdvertRepository, AdvertRepository>();
+builder.Services.AddTransient<ICityRepository, CityRepository>();
+builder.Services.AddTransient<IHomeService, HomeService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

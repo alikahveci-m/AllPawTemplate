@@ -12,6 +12,7 @@ namespace AllPawTemplate.Repositories.AdvertRepository
         {
             _context = context;
         }
+
         public async Task<List<Advert>> GetAllAdvertAsync()
         {
             string query = "Select * From [AllPawTemplate].[dbo].[Advert]";
