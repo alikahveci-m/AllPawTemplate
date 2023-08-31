@@ -1,4 +1,5 @@
-﻿
+﻿@using AllPawTemplate.Dtos
+@model UserLoginModelDto
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
@@ -13,18 +14,18 @@
                         <h3>Giriş Yap</h3>
                         <p>Hâlâ Sitemize Üye Değil Misin ? <a href="/Signup/Signup/">Kayıt Ol</a></p>
                     </div>
-                    <form class="w-100">
+                    <form class="w-100" method="post" asp-action="Index">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-inner">
                                     <label>Email Adresinizi Giriniz *</label>
-                                    <input type="email" placeholder="Email">
+                                    <input type="email" name="email" placeholder="Email">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-inner">
                                     <label>Şifrenizi Giriniz *</label>
-                                    <input type="password" name="password" id="password" placeholder="Şifre" />
+                                    <input type="password" name="password" placeholder="Şifre" />
                                     <i class="bi bi-eye-slash" id="togglePassword"></i>
                                 </div>
                             </div>
@@ -38,11 +39,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="account-btn">Giriş Yap</button>
+                        <button class="account-btn" type="submit">Giriş Yap</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

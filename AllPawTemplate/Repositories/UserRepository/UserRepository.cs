@@ -46,5 +46,22 @@ namespace AllPawTemplate.Repositories.UserRepository
                 await connection.ExecuteAsync(query,paramaters);
             }
         }
+
+        public async Task<bool> LoginAsync(UserLoginModelDto userLoginModel)
+        {
+            userLoginModel.Password = BCrypt.Net.BCrypt.HashPassword(userLoginModel.Password);
+            string query = "Select * From [dbo].[User] WITH(NOLOCK) WHERE Email = @email AND PasswordHash = @password";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@email", userLoginModel.Email);
+                paramaters.Add("@password", userLoginModel.Password);
+
+                var values = await connection.QueryAsync<User>(query, paramaters);
+                return values.Any();
+            }
+        }
     }
 }

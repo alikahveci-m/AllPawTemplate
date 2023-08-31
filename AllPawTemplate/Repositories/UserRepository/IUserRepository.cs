@@ -6,5 +6,6 @@ namespace AllPawTemplate.Repositories.UserRepository
     {
         Task<List<User>> GetAllUserAsync();
         void CreateUser(User user);
+        Task<bool> LoginAsync(UserLoginModelDto userLoginModel);
     }
 }

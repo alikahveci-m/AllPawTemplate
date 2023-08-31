@@ -3,6 +3,7 @@ using AllPawTemplate.Repositories.AdvertRepository;
 using AllPawTemplate.Repositories.CityRepository;
 using AllPawTemplate.Repositories.UserRepository;
 using AllPawTemplate.Services.HomeService;
+using AllPawTemplate.Services.LoginService;
 using AllPawTemplate.Services.SignupService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IAdvertRepository, AdvertRepository>();
 builder.Services.AddTransient<ICityRepository, CityRepository>();
 
+builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddTransient<ISignupService, SignupService>();
 builder.Services.AddTransient<IHomeService, HomeService>();
 
