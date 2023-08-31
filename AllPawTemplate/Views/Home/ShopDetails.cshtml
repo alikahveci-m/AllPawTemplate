@@ -1,14 +1,119 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "ShopDetails";
     Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
 }
 
+<head>
+    <style>
+        .tblüst {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid gray;
+            border-top: 3px solid black;
+        }
+
+            .tblüst th, .tblüst td {
+                text-align: left;
+                padding: 10px;
+                border: 1px solid gray;
+                color: black;
+            }
+
+            .tblüst tr:nth-child(even) {
+                background-color: gray;
+            }
+
+        .tblalt {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid gray;
+            border-bottom: 3px solid black;
+        }
+
+            .tblalt th, .tblalt td {
+                text-align: left;
+                padding: 10px;
+                color: black;
+            }
+
+            .tblalt tr:nth-child(even) {
+                background-image: linear-gradient(to right,#f9d1e1,#f8dfbc);
+            }
+
+        .tblortasag {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid gray;
+            border-bottom: 3px solid black;
+        }
+
+            .tblortasag th, .tblortasag td {
+                text-align: left;
+                padding: 10px;
+                color: black;
+                border: 1px solid gray
+            }
+
+            .tblortasag tr:nth-child(even) {
+                background-image: white;
+            }
+
+        .tblaltssag {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+            .tblaltssag th, .tblaltssag td {
+                text-align: left;
+                padding: 10px;
+                color: black;
+                background-image: linear-gradient(to right,#f9d1e1,#f8dfbc);
+            }
+
+        .image-button {
+            display: inline-block;
+            border: 2px dotted black;
+            cursor: pointer;
+            background-color: transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+            .image-button img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .image-button:hover {
+                transform: scale(1.1);
+            }
+
+        .watermark {
+            position: absolute;
+            top: 140px;
+            left: 180px;
+            z-index: 1; /* Diğer içeriklerin üzerine gelecek */
+            pointer-events: none; /* Tıklamaları engelle */
+        }
+
+            .watermark img {
+                opacity: 0.2;
+                transform: rotate(-35deg);
+            }
+
+    </style>
+</head>
 <div class="shop-details-page pt-120 mb-120">
     <div class="container">
         <div class="row g-lg-4 gy-5 mb-120">
             <div class="col-lg-7">
-                <div class="tab-content tab-content1" id="v-pills-tabContent">
+
+                <div class="tab-content tab-content1" style="background-image:linear-gradient(to right,#f9d1e1,#f8dfbc)" id="v-pills-tabContent">
+
                     <div class="tab-pane fade active show" id="v-pills-img1" role="tabpanel" aria-labelledby="v-pills-img1-tab">
                         <img class="img-fluid" src="~/html-files/assets/images/bg/shop-big-01.png" alt="">
                     </div>
@@ -25,9 +130,10 @@
                         <img class="img-fluid" src="~/html-files/assets/images/bg/shop-big-05.png" alt="">
                     </div>
                 </div>
-
+                <div class="watermark">
+                    <img class="watermark" src="~/HPimage/HpLogo.png" />
+                </div>
                 <div class="nav nav1 nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
                     <button class="nav-link active" id="v-pills-img1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-img1" type="button" role="tab" aria-controls="v-pills-img1" aria-selected="true">
                         <img src="~/html-files/assets/images/bg/shop-sm-01.png" alt="">
                     </button>
@@ -45,55 +151,65 @@
                     </button>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="shop-details-content">
-                    <h3>To Make Delicious Food Item.</h3>
-                    <ul class="shopuct-review2 d-flex flex-row align-items-center mb-25">
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><a href="#" class="review-no">(1 customer review)</a></li>
-                    </ul>
-                    <div class="model-number">
-                        <span>SKU:9852410</span>
-                    </div>
-                    <div class="price-tag">
-                        <h4>$50.00 <del>$80.00</del></h4>
-                    </div>
 
-                    <p>Donec bibendum enim ut elit porta ullamcorper. Vestibulum Nai wekemdini iaculis vitae nulla. Morbi mattis nec mi ac mollis. </p>
-                    <div class="shop-quantity d-flex align-items-center justify-content-start mb-20">
-                        <div class="quantity d-flex align-items-center">
-                            <div class="quantity-nav nice-number d-flex align-items-center">
-                                <input type="number" value="1" min="1">
-                            </div>
-                        </div>
-                        <a href="cart.html" class="primary-btn3">Add to cart</a>
-                    </div>
-                    <div class="buy-now-btn">
-                        <a href="cart.html">Buy Now</a>
-                    </div>
-                    <div class="compare-wishlist-area">
-                        <ul>
-                            <li><a href="#"><span><img src="~/html-files/assets/images/icon/compare.svg" alt=""></span> Compare</a></li>
-                            <li><a href="#"><span><img src="~/html-files/assets/images/icon/Icon-favorites2.svg" alt=""></span> Add to wishlist</a></li>
-                        </ul>
-                    </div>
-                    <div class="pyment-method">
-                        <h6>Guaranted Safe Checkout</h6>
-                        <ul>
-                            <li><img src="~/html-files/assets/images/icon/visa2.svg" alt=""></li>
-                            <li><img src="~/html-files/assets/images/icon/amex.svg" alt=""></li>
-                            <li><img src="~/html-files/assets/images/icon/discover.svg" alt=""></li>
-                            <li><img src="~/html-files/assets/images/icon/mastercard.svg" alt=""></li>
-                            <li><img src="~/html-files/assets/images/icon/stripe.svg" alt=""></li>
-                            <li><img src="~/html-files/assets/images/icon/paypal.svg" alt=""></li>
-                            <li><img src="~/html-files/assets/images/icon/pay.svg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="col-lg-3">
+                <table class="tblüst">
+                    <tr>
+                        <th><center>İsim Soyisim</center></th>
+                    </tr>
+                </table>
+
+                <table class="tblalt">
+                    <tr>
+                        <th>İlan</th>
+                        <th>Detayları</th>
+                    </tr>
+                    <tr>
+                        <td><b>Türü</b></td>
+                        <td><b><font size="4">: </font> </b>Griffin</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-2">
+                <table class="tblüst">
+                    <tr>
+                        <th><center>İlan Sahibi Bilgileri</center></th>
+                    </tr>
+                </table>
+
+
+                <table class="tblortasag">
+
+                    <tr>
+                        <th><center><img src="~/HPimage/Errorx.jpg" width="100" height="100" style="border-color:black 3px solid" /></center></th>
+
+                    </tr>
+                    <tr>
+                        <td><b>Peter</b></td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Peter</b></td>
+
+                    </tr>
+
+                </table>
+                <br />
+
+                <table class="tblaltssag">
+                    <tr>
+                        <th><center><i>Mesaj Atmak için !</i><button class="image-button"><img src="~/HPimage/WhatsApp2.png" width="160" height="40" /></button></center></th>
+                    </tr>
+                </table>
+                <br />
+                <table class="tblaltssag">
+                    <tr>
+                        <th><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Bu ilan x günde yayınlandı</th>
+                    </tr>
+                </table>
+
+
+
             </div>
         </div>
         <div class="row mb-120">
@@ -102,13 +218,9 @@
                     <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
                             aria-selected="false">
-                        İlan Detayları
+                        İlan Açıklaması
                     </button>
-                    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                            aria-selected="true">
-                        Detaylı Bilgiler
-                    </button>
+
                     <button class="nav-link" id="v-pills-common-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-common" type="button" role="tab" aria-controls="v-pills-common"
                             aria-selected="true">
@@ -119,49 +231,16 @@
                 <div class="tab-content tab-content2" id="v-pills-tabContent2">
                     <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="description">
-                            <p class="para-2 mb-3">This is a type of food that is specifically formulated and intended for consumption by pets. It is usually sold in the form of dry kibble or wet cans, and is designed to meet the nutritional needs of a variety of different types of pets, including dogs, cats, and small animals like guinea pigs and rabbits.</p>
-                            <p class="para-2 mb-3">This food may help from a variety of different ingredients, including meat, grains, vegetables, and fortified vitamins and minerals. Some pet food is formulated for specific life stages, such as puppy or senior, and may contain higher levels of certain nutrients to support the needs of pets at those stages of life.</p>
-                            <p class="para-2 mb-0">At the end, also formulated for pets with special dietary needs, such as those with food allergies or sensitivities.</p>
+                            <p class="para-2 mb-3">İlan İle ilgili detay yazılar</p>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div class="addithonal-information">
-                            <table class="table total-table2">
-                                <tbody>
-                                    <tr>
-                                        <td>Protein</td>
-                                        <td>25%, to build and repair tissues, produce enzymes, and maintain healthy organs.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fats</td>
-                                        <td>0.5%, They also help keep the skin and coat healthy.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carbohydrates</td>
-                                        <td>10%, provide energy and help pets maintain healthy weight and keep good the digestive system.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Minerals</td>
-                                        <td>20%,Help building strong bones, maintaining healthy muscles, and regulating the body's fluid balance.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vitamins</td>
-                                        <td>15.5%, Essential for a variety of functions in the body, including the immune system, metabolism, and growth.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Animale</td>
-                                        <td> For Dog, Cat.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
                     <div class="tab-pane fade" id="v-pills-common" role="tabpanel" aria-labelledby="v-pills-common-tab">
                         <div class="reviews-area">
                             <div class="row g-lg-4 gy-5">
                                 <div class="col-lg-8">
                                     <div class="number-of-review">
-                                        <h3>Review (02) :</h3>
+                                        <h3>Yapılan Yorum Sayısı (dinamik) </h3>
                                     </div>
                                     <div class="review-list-area">
                                         <ul class="review-list">
@@ -173,11 +252,11 @@
                                                     <div class="review-content">
                                                         <div class="c-header d-flex align-items-center">
                                                             <div class="review-meta">
-                                                                <h5 class="mb-0"><a href="#">Rocky Mike ,</a></h5>
-                                                                <div class="c-date">06 july,2022</div>
+                                                                <h5 class="mb-0"><a href="#">Yorum Yapanın İsmi</a></h5>
+                                                                <div class="c-date">YYorum Tarihi</div>
                                                             </div>
                                                             <div class="replay-btn">
-                                                                <a href="#"><i class="bi bi-reply"></i>Reply</a>
+                                                                <a href="#"><i class="bi bi-reply"></i>Yanıtla</a>
                                                             </div>
                                                         </div>
                                                         <ul class="product-review">
@@ -188,38 +267,10 @@
                                                             <li><i class="bi bi-star-fill"></i></li>
                                                         </ul>
                                                         <div class="c-body">
-                                                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account. </p>
+                                                            <p> Yapılan Yorum Dinamik xxxxxxxxx xxxxxxxx xxx xxxx xxxxxx xxxxx xxx xxxxxx xxx</p>
                                                         </div>
                                                     </div>
 
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-review d-flex justify-content-between flex-md-nowrap flex-wrap">
-                                                    <div class="review-image">
-                                                        <img src="~/html-files/assets/images/bg/review-img-3.png" alt="image">
-                                                    </div>
-                                                    <div class="review-content">
-                                                        <div class="c-header d-flex align-items-center">
-                                                            <div class="review-meta">
-                                                                <h5 class="mb-0"><a href="#">Rony Jhon ,</a></h5>
-                                                                <div class="c-date">07 july,2022</div>
-                                                            </div>
-                                                            <div class="replay-btn">
-                                                                <a href="#"><i class="bi bi-reply"></i>Reply</a>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="product-review">
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                            <li><i class="bi bi-star-fill"></i></li>
-                                                        </ul>
-                                                        <div class="c-body">
-                                                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account. </p>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </li>
                                         </ul>
@@ -268,7 +319,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-inner two">
-                                                        <button class="primary-btn3 btn-lg" type="submit">Post Comment</button>
+                                                        <button>Yorum Yap</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -488,4 +539,5 @@
         </div>
     </div>
 </div>
+
 

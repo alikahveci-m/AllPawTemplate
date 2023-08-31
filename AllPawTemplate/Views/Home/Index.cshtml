@@ -137,6 +137,7 @@
                             </div>
                         </div>
                     </div>
+                    <center><button class="image-button-login" onclick="applyFilters()"><b>Filtrele</b></button></center>
                     <script>
                         const sahibindenCheckbox = document.getElementById('sahibindenCheckbox');
                         const petshopCheckbox = document.getElementById('petshopCheckbox');
@@ -196,7 +197,7 @@
                                             <div class="plus-icon">
                                                 <i class="bi bi-plus"></i>
                                             </div>
-                                            <a href="shop-details.html">View Details</a>
+                                            <a href="/Home/ShopDetails">View Details</a>
                                         </div>
                                         <ul class="cart-icon-list">
                                             <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
@@ -204,7 +205,7 @@
                                         </ul>
                                     </div>
                                     <div class="collection-content text-center">
-                                        <h4><a href="shop-details.html">@advert.Title</a></h4>
+                                        <h4><a href="/Home/ShopDetails">@advert.Title</a></h4>
                                         <div class="price">
                                             <h6>@advert.Price</h6>
                                             <del>@advert.Price</del>
@@ -244,7 +245,6 @@
         </div>
     </div>
 </div>
-<button onclick="applyFilters()">Filtrele</button>
 <script>
     function applyFilters() {
         // Seçilen tüm filtreleri al
