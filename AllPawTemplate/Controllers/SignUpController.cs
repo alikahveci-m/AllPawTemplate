@@ -1,25 +1,29 @@
 ﻿using AllPawTemplate.Dtos;
+using AllPawTemplate.Services.SignupService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AllPawTemplate.Controllers
 {
-    public class SignUpController : Controller
+    public class SignupController : Controller
     {
-        public IActionResult SignUp()
+        private readonly ISignupService _signupService;
+
+        public SignupController(ISignupService signupService)
+        {
+            _signupService = signupService;
+        }
+
+        public IActionResult Signup()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult SignUp(UserSignUpModelDto model)
+        public IActionResult Signup(UserSignupModelDto model)
         {
             if (ModelState.IsValid)
             {
-                // Burada kullanıcıyı veritabanına kaydedebilirsiniz.
-                // Örneğin, Identity Framework veya başka bir kimlik doğrulama yöntemi kullanabilirsiniz.
-
-                // Başarılı kayıt sonrası bir yönlendirme yapabilirsiniz.
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password);
+                _signupService.CreateUser(model);
                 //return RedirectToAction("Success");
             }
 

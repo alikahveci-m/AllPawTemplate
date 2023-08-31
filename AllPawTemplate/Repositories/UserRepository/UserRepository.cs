@@ -23,5 +23,28 @@ namespace AllPawTemplate.Repositories.UserRepository
                 return values.ToList();
             }
         }
+
+        public async void CreateUser(User user)
+        {
+            string query = @"INSERT INTO dbo.[User] (UserType, PackageType, Username, Email, PasswordHash, FirstName, LastName, ProfilePhoto, PhoneNumber, RegistrationDate)
+                     VALUES (@UserType, @PackageType, @Username, @Email, @PasswordHash, @FirstName, @LastName, @ProfilePhoto, @PhoneNumber, @RegistrationDate)";
+            using (var connection = _context.CreateConnection())
+            {
+                var paramaters = new DynamicParameters();
+
+                paramaters.Add("@UserType", user.UserType);
+                paramaters.Add("@PackageType", user.PackageType);
+                paramaters.Add("@Username", user.Username);
+                paramaters.Add("@Email", user.Email);
+                paramaters.Add("@PasswordHash", user.PasswordHash);
+                paramaters.Add("@FirstName", user.FirstName);
+                paramaters.Add("@LastName", user.LastName);
+                paramaters.Add("@ProfilePhoto", user.ProfilePhoto);
+                paramaters.Add("@PhoneNumber", user.PhoneNumber);
+                paramaters.Add("@RegistrationDate", user.RegistrationDate);
+
+                await connection.ExecuteAsync(query,paramaters);
+            }
+        }
     }
 }

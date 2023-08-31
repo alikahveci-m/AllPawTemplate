@@ -1,6 +1,6 @@
 ﻿namespace AllPawTemplate.Dtos
 {
-    public class UserSignUpModelDto
+    public class UserSignupModelDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

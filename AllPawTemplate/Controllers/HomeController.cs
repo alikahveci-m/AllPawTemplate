@@ -56,7 +56,7 @@ namespace AllPawTemplate.Controllers
         {
             return View();
         }
-        public IActionResult LogIn()
+        public IActionResult Login()
         {
             return View();
         }

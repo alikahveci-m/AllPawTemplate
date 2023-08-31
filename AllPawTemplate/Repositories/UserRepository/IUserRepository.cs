@@ -5,5 +5,6 @@ namespace AllPawTemplate.Repositories.UserRepository
     public interface IUserRepository
     {
         Task<List<User>> GetAllUserAsync();
+        void CreateUser(User user);
     }
 }
