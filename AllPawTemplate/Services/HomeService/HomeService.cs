@@ -8,14 +8,23 @@ namespace AllPawTemplate.Services.HomeService
     {
         private readonly IAdvertRepository _advertRepository;
         private readonly ICityRepository _cityRepository;
-        public HomeService(IAdvertRepository advertRepository, ICityRepository cityRepository)
+
+        public HomeService(IAdvertRepository advertRepository, 
+            ICityRepository cityRepository)
         {
             _advertRepository = advertRepository;
             _cityRepository = cityRepository;
         }
-        public Task<HomeResponse> GetHome()
+
+        public async Task<HomeResponse> GetHome()
         {
-            throw new NotImplementedException();
+            var response = new HomeResponse
+            {
+                Adverts = await _advertRepository.GetAllAdvertAsync(),
+                Cities = await _cityRepository.GetAllCityAsync(),
+            };
+
+            return response;
         }
     }
 }

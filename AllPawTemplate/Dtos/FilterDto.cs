@@ -3,8 +3,9 @@
     public class FilterDto
     {
         public List<string> Breeds { get; set; } // Seçilen türlerin listesi
-        public PriceRange PriceRange { get; set; } // Fiyat aralığ
+        public PriceRange PriceRange { get; set; } // Fiyat aralığı
         public List<string> Ages { get; set; } // Seçilen yaş aralıklarının listesi
+        public List<string> Cities { get; set; } // Seçilen illerin listesi
         public string SellerType { get; set; } // Satıcı türü (Sahibinden veya Petshop)
     }
 

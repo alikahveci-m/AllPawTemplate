@@ -1,5 +1,5 @@
 ﻿@using AllPawTemplate.Dtos
-@model List<Advert>
+@model HomeResponse
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
@@ -63,16 +63,21 @@
                         </div>
                     </div>
                     <div class="shop-widget">
-                        <h5 class="shop-widget-title">Fiyat Aralığı</h5>
-                        <div class="range-widget">
-                            <div id="slider-range" class="price-filter-range"></div>
-                            <div class="mt-25 d-flex justify-content-between gap-4">
-                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='500');" id="min_price" class="price-range-field" />
-                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='20000');" id="max_price" class="price-range-field" />
+                        <div class="check-box-item">
+                            <h5 class="shop-widget-title">Şehir</h5>
+                            <div class="checkbox-container" style="height: 400px; overflow-y: scroll;">
+                                @foreach (var city in Model.Cities)
+                                {
+                                    <label class="containerss">
+                                        @city.CityName
+                                        <input type="checkbox" data-filter="city" value="@city.CityId">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                }
                             </div>
                         </div>
                     </div>
-
                     <div class="shop-widget">
                         <div class="check-box-item">
                             <h5 class="shop-widget-title">Yaşı</h5>
@@ -106,6 +111,16 @@
                         </div>
                     </div>
                     <div class="shop-widget">
+                        <h5 class="shop-widget-title">Fiyat Aralığı</h5>
+                        <div class="range-widget">
+                            <div id="slider-range" class="price-filter-range"></div>
+                            <div class="mt-25 d-flex justify-content-between gap-4">
+                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='500');" id="min_price" class="price-range-field" />
+                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='20000');" id="max_price" class="price-range-field" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-widget">
                         <div class="check-box-item">
                             <h5 class="shop-widget-title">Kimden</h5>
                             <div class="checkbox-container">
@@ -122,7 +137,6 @@
                             </div>
                         </div>
                     </div>
-
                     <script>
                         const sahibindenCheckbox = document.getElementById('sahibindenCheckbox');
                         const petshopCheckbox = document.getElementById('petshopCheckbox');
@@ -139,41 +153,8 @@
                             }
                         });
                     </script>
-                    <div class="shop-widget">
-                        <div class="check-box-item">
-                            <h5 class="shop-widget-title">Şehir</h5>
-                            <div class="checkbox-container">
-                                <label class="containerss">
-                                    İstanbul Avrupa
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    İstanbul Anadolu
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    İzmir
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Ankara
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Kastamonu
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-
             <div class="col-lg-9">
                 <div class="row mb-50">
                     <div class="col-lg-12">
@@ -205,7 +186,7 @@
                 <div class="row g-4 justify-content-center">
                     @for (int i = 0; i < 5; i++)
                     {
-                        @foreach (var advert in Model)
+                        @foreach (var advert in Model.Adverts)
                         {
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="collection-card">
@@ -244,7 +225,6 @@
                         }
                     }
                 </div>
-
                 <div class="row pt-70">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <div class="paginations-area">
@@ -265,7 +245,6 @@
     </div>
 </div>
 <button onclick="applyFilters()">Filtrele</button>
-
 <script>
     function applyFilters() {
         // Seçilen tüm filtreleri al
@@ -276,6 +255,7 @@
                 max: document.getElementById('max_price').value
             },
             ages: [], // Seçilen yaş aralıklarının burada saklanması
+            cities: [],
             sellerType: ''
         };
 
@@ -294,6 +274,15 @@
         ageCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 selectedFilters.ages.push(checkbox.value);
+            }
+        });
+
+        // İl filtrelerini al
+        const cityCheckboxes = document.querySelectorAll('input[type="checkbox"][data-filter="city"]');
+        selectedFilters.cities = [];
+        cityCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedFilters.cities.push(checkbox.value);
             }
         });
 

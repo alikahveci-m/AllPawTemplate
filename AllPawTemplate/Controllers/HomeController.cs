@@ -1,27 +1,23 @@
 ﻿using AllPawTemplate.Dtos;
 using AllPawTemplate.Repositories.AdvertRepository;
 using AllPawTemplate.Repositories.UserRepository;
+using AllPawTemplate.Services.HomeService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AllPawTemplate.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IUserRepository _userRepository;
-        private readonly IAdvertRepository _advertRepository;
+        private readonly IHomeService _homeService;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, IAdvertRepository advertRepository)
+        public HomeController(IHomeService homeService)
         {
-            _logger = logger;
-            _userRepository = userRepository;
-            _advertRepository = advertRepository;
+            _homeService = homeService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var ea = await _userRepository.GetAllUserAsync();
-            var response = await _advertRepository.GetAllAdvertAsync();
+            var response = await _homeService.GetHome();
             return View(response);
         }
 
@@ -32,7 +28,7 @@ namespace AllPawTemplate.Controllers
             // Örnek olarak, _advertRepository üzerinden filtreleri kullanarak filtrelenmiş Advert listesi alabilirsiniz
 
             // Filtrelenmiş Advert listesini JSON olarak dönün
-            var filteredAdverts = await _advertRepository.GetAllAdvertAsync();
+            var filteredAdverts = await _homeService.GetHome();
             return Json(filteredAdverts);
         }
         public IActionResult CreateAdvert()
