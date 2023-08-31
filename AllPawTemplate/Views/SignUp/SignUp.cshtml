@@ -1,0 +1,80 @@
+﻿@using AllPawTemplate.Dtos
+@model UserSignUpModelDto
+
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
+}
+
+<div class="signup-section pt-120 pb-120">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <div class="form-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".2s">
+                    <div class="form-title">
+                        <h3>Kayıt Ol</h3>
+                        <p>Zaten Bir Hesabın Var Mı ? <a href="/PetShopHome/LogIn/">Giriş Yap</a></p>
+                    </div>
+                    <form asp-controller="SignUp" asp-action="SignUp" method="post" class="w-100">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-inner">
+                                    <label asp-for="FirstName">İsminizi Giriniz *</label>
+                                    <input asp-for="FirstName" class="form-control" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-inner">
+                                    <label asp-for="LastName">Soyisminizi Giriniz *</label>
+                                    <input asp-for="LastName" class="form-control" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-inner">
+                                    <label asp-for="Email">Email Adresinizi Giriniz *</label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-inner">
+                                    <label asp-for="Password">Şifrenizi Giriniz *</label>
+                                    <input type="password" asp-for="Password" class="form-control" />
+                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-inner">
+                                    <label>Şifrenizi Tekrar Giriniz *</label>
+                                    <input type="password" name="password" id="password2" placeholder="Tekrar Şifre" />
+                                    <i class="bi bi-eye-slash" id="togglePassword2"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-inner">
+                                    <label asp-for="AcceptPetShopTerms">PetShop Hesabı</label>
+                                    <input asp-for="AcceptPetShopTerms" type="checkbox" style="transform: scale(0.5);" style="margin-left: -10%;" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-agreement form-inner d-flex justify-content-between flex-wrap">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="html" />
+                                        <label for="html">Kabul Ediyorum <a href="#">Şatlar ve Koşullar & Gizlilik Politikası</a></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="account-btn">Kayıt Ol</button>
+                    </form>
+                    <div class="form-poicy-area">
+                        <p>"Kayıt ol" düğmesini tıklayarak bir Hepsi Pati hesabı oluşturursunuz ve Hepsi Pati'nin Şartlar ve Koşullar ile Gizlilik Politikasını kabul etmiş olursunuz. <a href="#">Şartlar ve Koşullar</a> & <a href="#">Gizlilik Politikası.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
