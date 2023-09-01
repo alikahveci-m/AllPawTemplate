@@ -16,6 +16,8 @@
         public string Gender { get; set; }
         public string CategoryName { get; set; }
         public string FormattedPrice { get; set; }
+        public string CityName { get; set; }
+        public string CountryName { get; set; }
         public List<string> SubImages { get; set; }
         public decimal Price { get; set; }
         public DateTime CreationDate { get; set; }

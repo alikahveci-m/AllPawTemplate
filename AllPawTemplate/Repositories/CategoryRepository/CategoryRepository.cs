@@ -23,5 +23,22 @@ namespace AllPawTemplate.Repositories.CategoryRepository
                 return values.ToList();
             }
         }
+
+        public async Task<Category> GetCategoryByAdvertIdAsync(int advertId)
+        {
+            string query = @"Select c.CategoryId, c.CategoryName
+                             From [AllPawTemplate].[dbo].[Category] c WITH(NOLOCK)
+                             INNER JOIN [AllPawTemplate].[dbo].[Advert] a WITH(NOLOCK) 
+                             ON c.CategoryId = a.CategoryId WHERE a.AdvertId = @advertId";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@advertId", advertId);
+
+                var values = await connection.QueryFirstOrDefaultAsync<Category>(query, parameters);
+                return values;
+            }
+        }
     }
 }

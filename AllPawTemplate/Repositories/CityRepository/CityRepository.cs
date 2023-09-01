@@ -23,5 +23,22 @@ namespace AllPawTemplate.Repositories.CityRepository
                 return values.ToList();
             }
         }
+
+        public async Task<City> GetCityByAdvertId(int advertId)
+        {
+            string query = @"Select c.CityId, c.CityName
+                             From [AllPawTemplate].[dbo].[City] c WITH(NOLOCK)
+                             INNER JOIN [AllPawTemplate].[dbo].[Advert] a WITH(NOLOCK) 
+                             ON c.CityId = a.CityId WHERE a.AdvertId = @advertId";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@advertId", advertId);
+
+                var values = await connection.QueryFirstOrDefaultAsync<City>(query, parameters);
+                return values;
+            }
+        }
     }
 }
