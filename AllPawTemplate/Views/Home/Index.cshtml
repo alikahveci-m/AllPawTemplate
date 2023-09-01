@@ -14,51 +14,14 @@
                         <div class="check-box-item">
                             <h5 class="shop-widget-title">Tür</h5>
                             <div class="checkbox-container">
-                                <label class="containerss">
-                                    Golden Retriever
-                                    <input type="checkbox" checked="checked" data-filter="breed" value="Golden Retriever">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Labrador Retriever
-                                    <input type="checkbox" data-filter="breed" value="Labrador Retriever">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    German Shepherd
-                                    <input type="checkbox" data-filter="breed" value=" German Shepherd">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Bulldog
-                                    <input type="checkbox" data-filter="breed" value="Bulldog">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Maltipoo
-                                    <input type="checkbox" data-filter="breed" value="Maltipoo">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Poodle
-                                    <input type="checkbox" data-filter="breed" value="Poodle">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Morkie
-                                    <input type="checkbox" data-filter="breed" value="Morkie">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss">
-                                    Chow Chow
-                                    <input type="checkbox" data-filter="breed" value="Chow Chow">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerss" data-filter="breed" value="Pomeranian">
-                                    Pomeranian
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <label class="containerss">
+                                        @category.CategoryName
+                                        <input type="checkbox" data-filter="breed" value="@category.CategoryId">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                }
                             </div>
                         </div>
                     </div>
@@ -84,7 +47,7 @@
                             <div class="checkbox-container">
                                 <label class="containerss">
                                     1 Yaşdan Küçük
-                                    <input type="checkbox" checked="checked" data-filter="age" value="0">
+                                    <input type="checkbox"  data-filter="age" value="0">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
@@ -125,13 +88,13 @@
                             <h5 class="shop-widget-title">Kimden</h5>
                             <div class="checkbox-container">
                                 <label class="containerss">
-                                    Sahibinden
-                                    <input type="checkbox" id="sahibindenCheckbox" checked="checked">
+                                    Petshop'dan
+                                    <input type="checkbox" id="petshopCheckbox" checked="checked">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
-                                    Petshop'dan
-                                    <input type="checkbox" id="petshopCheckbox">
+                                    Sahibinden
+                                    <input type="checkbox" id="sahibindenCheckbox">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -189,7 +152,7 @@
                     {
                         @foreach (var advert in Model.Adverts)
                         {
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="collection-card">
                                     <div class="collection-img" style="background-color:white">
                                         <img class="img-gluid" src="@advert.AdvertPhoto" width="250" , height="250" alt="">
@@ -205,10 +168,9 @@
                                         </ul>
                                     </div>
                                     <div class="collection-content text-center">
-                                        <h4><a href="/Home/ShopDetails">@advert.Title</a></h4>
+                                        <h4><a href="/Home/ShopDetails?advertId=@advert.AdvertId">@advert.Title</a></h4>
                                         <div class="price">
-                                            <h6>@advert.Price</h6>
-                                            <del>@advert.Price</del>
+                                            <h6>@advert.Price.ToString("N").Replace(",00", "")</h6>
                                         </div>
                                         <div class="review">
                                             <ul>

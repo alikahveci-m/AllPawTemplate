@@ -1,4 +1,5 @@
 ﻿using AllPawTemplate.Dtos;
+using AllPawTemplate.Enitities;
 using AllPawTemplate.Models.DapperContext;
 using Dapper;
 
@@ -61,6 +62,32 @@ namespace AllPawTemplate.Repositories.UserRepository
 
                 var values = await connection.QueryAsync<User>(query, paramaters);
                 return values.Any();
+            }
+        }
+
+        public async Task<User> GetUserByAdvertId(int advertId)
+        {
+            string query = @"SELECT
+                u.[Username], 
+                u.[Email], 
+                u.[PasswordHash], 
+                u.[FirstName], 
+                u.[LastName], 
+                u.[ProfilePhoto], 
+                u.[RegistrationDate], 
+                u.[UserType], 
+                u.[PackageType], 
+                u.[PhoneNumber] 
+                FROM dbo.Advert a WITH(NOLOCK) 
+                INNER JOIN dbo.[User] u WITH(NOLOCK) on u.UserId = a.UserId  WHERE a.AdvertId = @advertId";
+
+            using(var  connection = _context.CreateConnection())
+            {
+                var paramaters = new DynamicParameters();
+                paramaters.Add("@advertId", advertId);
+
+                var values = await connection.QueryFirstOrDefaultAsync<User>(query, paramaters);
+                return values;
             }
         }
     }

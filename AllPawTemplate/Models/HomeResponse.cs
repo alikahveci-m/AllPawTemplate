@@ -1,4 +1,4 @@
-﻿using AllPawTemplate.Dtos;
+﻿using AllPawTemplate.Enitities;
 
 namespace AllPawTemplate.Models
 {

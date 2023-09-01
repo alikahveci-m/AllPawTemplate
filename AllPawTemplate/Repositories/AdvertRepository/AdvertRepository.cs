@@ -1,4 +1,4 @@
-﻿using AllPawTemplate.Dtos;
+﻿using AllPawTemplate.Enitities;
 using AllPawTemplate.Models.DapperContext;
 using Dapper;
 
@@ -21,6 +21,19 @@ namespace AllPawTemplate.Repositories.AdvertRepository
             {
                 var values = await connection.QueryAsync<Advert>(query);
                 return values.ToList();
+            }
+        }
+
+        public async Task<Advert> GetAdvertByIdAsync(int advertId)
+        {
+            string query = "Select * From [AllPawTemplate].[dbo].[Advert] WITH(NOLOCK) WHERE AdvertId=@advertId";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@advertId", advertId);
+                var values = await connection.QueryFirstOrDefaultAsync<Advert>(query, parameters);
+                return values;
             }
         }
     }

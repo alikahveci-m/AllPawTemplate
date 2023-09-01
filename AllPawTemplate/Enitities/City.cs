@@ -1,4 +1,4 @@
-﻿namespace AllPawTemplate.Dtos
+﻿namespace AllPawTemplate.Enitities
 {
     public class City
     {

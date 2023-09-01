@@ -1,4 +1,5 @@
 ﻿using AllPawTemplate.Dtos;
+using AllPawTemplate.Enitities;
 using AllPawTemplate.Repositories.UserRepository;
 
 namespace AllPawTemplate.Services.SignupService

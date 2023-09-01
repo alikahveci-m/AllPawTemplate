@@ -1,6 +1,4 @@
 ﻿using AllPawTemplate.Dtos;
-using AllPawTemplate.Repositories.AdvertRepository;
-using AllPawTemplate.Repositories.UserRepository;
 using AllPawTemplate.Services.HomeService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,21 +22,27 @@ namespace AllPawTemplate.Controllers
         [HttpPost]
         public async Task<IActionResult> ApplyFilters([FromBody] FilterDto filters)
         {
-            // Burada filtreleri kullanarak Advert'ları filtreleyin
-            // Örnek olarak, _advertRepository üzerinden filtreleri kullanarak filtrelenmiş Advert listesi alabilirsiniz
-
-            // Filtrelenmiş Advert listesini JSON olarak dönün
             var filteredAdverts = await _homeService.GetHome();
             return Json(filteredAdverts);
         }
+
+        public async Task<IActionResult> ShopDetails(int advertId)
+        {
+            var response = await _homeService.GetAdvertDetail(advertId);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return View(response);
+        }
+
         public IActionResult CreateAdvert()
         {
             return View();
         }
-        public IActionResult ShopDetails()
-        {
-            return View();
-        }
+
         public IActionResult Members()
         {
             return View();
