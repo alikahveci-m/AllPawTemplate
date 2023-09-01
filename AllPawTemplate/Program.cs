@@ -4,6 +4,7 @@ using AllPawTemplate.Repositories.CategoryRepository;
 using AllPawTemplate.Repositories.CityRepository;
 using AllPawTemplate.Repositories.ImageRepository;
 using AllPawTemplate.Repositories.UserRepository;
+using AllPawTemplate.Services.AdvertDetailService;
 using AllPawTemplate.Services.HomeService;
 using AllPawTemplate.Services.LoginService;
 using AllPawTemplate.Services.SignupService;
@@ -23,6 +24,7 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IHomeService, HomeService>();
 builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddTransient<ISignupService, SignupService>();
+builder.Services.AddTransient<IAdvertDetailService, AdvertDetailService>();
 
 var app = builder.Build();
 

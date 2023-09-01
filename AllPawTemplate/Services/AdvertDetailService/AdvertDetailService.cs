@@ -1,4 +1,5 @@
-﻿using AllPawTemplate.Models;
+﻿using AllPawTemplate.Converters;
+using AllPawTemplate.Models;
 using AllPawTemplate.Repositories.AdvertRepository;
 using AllPawTemplate.Repositories.CategoryRepository;
 using AllPawTemplate.Repositories.CityRepository;
@@ -36,9 +37,12 @@ namespace AllPawTemplate.Services.AdvertDetailService
             var images = await _imageRepository.GetImagesByAdvertIdAsync(advertId);
             var category = await _categoryRepository.GetCategoryByAdvertIdAsync(advertId);
 
-
-           
-
+            var response = new DetailResponse
+            {
+                Advert = AdvertDetailConverter.AdvertDetail(advert, city, images, category),
+                User = user,
+            };
+                
             return response;
         }
     }

@@ -6,7 +6,7 @@ namespace AllPawTemplate.Converters
 {
     public static class AdvertDetailConverter
     {
-        public static AdvertDetailDto AdvertDetail(Advert advert, City city, Images images, Category category)
+        public static AdvertDetailDto AdvertDetail(Advert advert, City city, List<Images> images, Category category)
         {
             var response = new AdvertDetailDto
             {
@@ -22,9 +22,16 @@ namespace AllPawTemplate.Converters
                 Description = advert.Description,
                 Gender = advert.Gender,
                 Price = advert.Price,
-                SubImages = images.ImageUrl.
+                SubImages = images.Select(x => x.ImageUrl).ToList(),
                 FormattedPrice = advert.Price.FormatAsPrice(),
+                Title = advert.Title,
+                UserId = advert.UserId,
+                ViewCount = advert.ViewCount,
+                Vitrine = advert.Vitrine,
+                Year = advert.Year
             };
+
+            return response;
         }
     }
 }

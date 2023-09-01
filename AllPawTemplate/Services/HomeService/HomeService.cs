@@ -35,16 +35,5 @@ namespace AllPawTemplate.Services.HomeService
 
             return response;
         }
-
-        public async Task<DetailResponse> GetAdvertDetail(int advertId)
-        {
-            var response = new DetailResponse
-            {
-                Advert = await _advertRepository.GetAdvertByIdAsync(advertId),
-                User = await _userRepository.GetUserByAdvertId(advertId),
-            };
-
-            return response;
-        }
     }
 }

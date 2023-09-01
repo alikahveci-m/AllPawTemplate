@@ -7,6 +7,7 @@
         public int CategoryId { get; set; }
         public int CityId { get; set; }
         public int Year { get; set; }
+        public int ViewCount { get; set; }
         public bool Active { get; set; }
         public bool Vitrine { get; set; }
         public string Title { get; set; }

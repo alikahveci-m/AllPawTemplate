@@ -26,18 +26,6 @@ namespace AllPawTemplate.Controllers
             return Json(filteredAdverts);
         }
 
-        public async Task<IActionResult> ShopDetails(int advertId)
-        {
-            var response = await _homeService.GetAdvertDetail(advertId);
-
-            if (response == null)
-            {
-                return NotFound();
-            }
-
-            return View(response);
-        }
-
         public IActionResult CreateAdvert()
         {
             return View();
