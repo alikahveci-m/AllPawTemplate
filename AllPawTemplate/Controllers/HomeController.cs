@@ -23,7 +23,7 @@ namespace AllPawTemplate.Controllers
         public async Task<IActionResult> ApplyFilters([FromBody] FilterDto filters)
         {
             var filteredAdverts = await _homeService.GetHomeAfterFilter(filters.Breeds);
-            return RedirectToAction("FilteredAdverts", filters);
+            return Json(filteredAdverts);
         }
 
         public async Task<IActionResult> FilteredAdverts(FilterDto filters)
