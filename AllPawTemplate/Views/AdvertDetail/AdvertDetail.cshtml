@@ -138,7 +138,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-1">
-            <button onclick="goToAdvert(@Model.Advert.AdvertId - 1)" id="patigeriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(-90deg)" alt="Geri"></button>
+            @if (Model.Advert.AdvertId > 1)
+            {
+                <button onclick="goToAdvert(@Model.Advert.AdvertId - 1)" id="patigeriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(-90deg)" alt="Geri"></button>
+            }
+            else
+            {
+                <button disabled="disabled" id="patigeriButton" class="pati-button" style="opacity: 0.5; cursor: not-allowed;">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(-90deg)" alt="Geri"></button>
+            }
         </div>
         <div class="col-md-1">
             <center>Önceki İlan</center>
