@@ -49,7 +49,7 @@ namespace AllPawTemplate.Repositories.UserRepository
 
         public async Task<bool> LoginAsync(UserLoginModelDto userLoginModel)
         {
-            userLoginModel.Password = BCrypt.Net.BCrypt.HashPassword(userLoginModel.Password);
+            //userLoginModel.Password = BCrypt.Net.BCrypt.HashPassword(userLoginModel.Password);
             string query = "Select * From [dbo].[User] WITH(NOLOCK) WHERE Email = @email AND PasswordHash = @password";
 
             using (var connection = _context.CreateConnection())

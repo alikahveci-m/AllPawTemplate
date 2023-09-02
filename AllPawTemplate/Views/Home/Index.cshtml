@@ -5,194 +5,73 @@
     Layout = "~/Views/Shared/Layout/HomeLayout/HomeLayout.cshtml";
 }
 
-<div class="inner-page-banner" style="transform:scale(0.7)">
+<div class="inner-page-banner" style="transform:scale(0.8)">
     <div class="breadcrumb-vec-btm">
         <img class="img-fluid" src="~/html-files/assets/images/bg/inner-banner-btm-vec.png" alt="">
     </div>
-    <center><b><font style="color:black" size="7">Vitrin İlanları</font></b></center>
+    <center><b><font style="color:black" size="6">Vitrin İlanları</font></b></center>
 
     <div class="row" style="transform:scale(0.9)">
         <div class="swiper essential-items-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="collection-card">
-                        <div class="offer-card">
-                            <span>Offer</span>
-                        </div>
-                        <div class="collection-img">
-                            <img class="img-gluid" src="~/html-files/assets/images/bg/category/h3-collection-01.png" alt="">
-                            <div class="view-dt-btn">
-                                <div class="plus-icon">
-                                    <i class="bi bi-plus"></i>
+                @{
+                    int k = 0;
+                }
+                @foreach (var advert in Model.VitrineAdverts)
+                {
+                    k++;
+
+                    <div class="swiper-slide">
+                        <div class="collection-card">
+                            @if (k % 3 == 1)
+                            {
+                                <div class="offer-card">
+                                    <span>En Beğenilen</span>
                                 </div>
-                                <a href="shop-details.html">View Details</a>
-                            </div>
-                            <ul class="cart-icon-list">
-                                <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                                <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="collection-content text-center">
-                            <h4><a href="shop-details.html">Whiskas Cat Food Core Tuna</a></h4>
-                            <div class="price">
-                                <h6>$25.00</h6>
-                                <del>$30.00</del>
-                            </div>
-                            <div class="review">
-                                <ul>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
+                            }
+                            @if (k % 3 == 2)
+                            {
+                                <div class="offer-card sale">
+                                    <span>Yeni Yavru</span>
+                                </div>
+                            }
+                            @if (k % 3 == 0)
+                            {
+                                <div class="offer-card sold-out">
+                                    <span>Güvenilir Üye</span>
+                                </div>
+                            }
+                            <div class="collection-img">
+                                <img class="img-gluid" src="@advert.AdvertPhoto" width="170" , height="210" alt="">
+                                <div class="view-dt-btn">
+                                    <div class="plus-icon">
+                                        <i class="bi bi-plus"></i>
+                                    </div>
+                                    <a href="/AdvertDetail/AdvertDetail?advertId=@advert.AdvertId">İlan Detayı</a>
+                                </div>
+                                <ul class="cart-icon-list">
+                                    <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
                                 </ul>
-                                <span>(50)</span>
+                            </div>
+                            <div class="collection-content text-center">
+                                <h4><a href="/AdvertDetail/AdvertDetail?advertId=@advert.AdvertId">@advert.Title</a></h4>
+                                <div class="price">
+                                    <h6>@advert.Price.ToString("N").Replace(",00", "")</h6>
+                                </div>
+                                <div class="review">
+                                    <ul>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                    </ul>
+                                    <span>(50)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="collection-card">
-                        <div class="collection-img">
-                            <img class="img-gluid" src="~/html-files/assets/images/bg/category/h3-collection-02.png" alt="">
-                            <div class="view-dt-btn">
-                                <div class="plus-icon">
-                                    <i class="bi bi-plus"></i>
-                                </div>
-                                <a href="shop-details.html">View Details</a>
-                            </div>
-                            <ul class="cart-icon-list">
-                                <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                                <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="collection-content text-center">
-                            <h4><a href="shop-details.html">Friskies Kitten Discoveries.</a></h4>
-                            <div class="price">
-                                <h6>$39.00</h6>
-                                <del>$39.00</del>
-                            </div>
-                            <div class="review">
-                                <ul>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                </ul>
-                                <span>(50)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="collection-card">
-                        <div class="offer-card sale">
-                            <span>Hot Sale</span>
-                        </div>
-                        <div class="collection-img">
-                            <img class="img-gluid" src="~/html-files/assets/images/bg/category/h3-collection-03.png" alt="">
-                            <div class="view-dt-btn">
-                                <div class="plus-icon">
-                                    <i class="bi bi-plus"></i>
-                                </div>
-                                <a href="shop-details.html">View Details</a>
-                            </div>
-                            <ul class="cart-icon-list">
-                                <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                                <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="collection-content text-center">
-                            <h4><a href="shop-details.html">Joules Cat Cotton House.</a></h4>
-                            <div class="price">
-                                <h6>$150.00</h6>
-                                <del>$200.00</del>
-                            </div>
-                            <div class="review">
-                                <ul>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                </ul>
-                                <span>(50)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="collection-card">
-                        <div class="collection-img">
-                            <img class="img-gluid" src="~/html-files/assets/images/bg/category/h3-collection-04.png" alt="">
-                            <div class="view-dt-btn">
-                                <div class="plus-icon">
-                                    <i class="bi bi-plus"></i>
-                                </div>
-                                <a href="shop-details.html">View Details</a>
-                            </div>
-                            <ul class="cart-icon-list">
-                                <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                                <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="collection-content text-center">
-                            <h4><a href="shop-details.html">Natural Dog Fresh Food.</a></h4>
-                            <div class="price">
-                                <h6>$18.00</h6>
-                                <del>$30.00</del>
-                            </div>
-                            <div class="review">
-                                <ul>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                </ul>
-                                <span>(50)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="collection-card">
-                        <div class="offer-card sold-out">
-                            <span>Sold Out</span>
-                        </div>
-                        <div class="collection-img">
-                            <img class="img-gluid" src="~/html-files/assets/images/bg/category/h3-collection-07.png" alt="">
-                            <div class="view-dt-btn">
-                                <div class="plus-icon">
-                                    <i class="bi bi-plus"></i>
-                                </div>
-                                <a href="shop-details.html">View Details</a>
-                            </div>
-                            <ul class="cart-icon-list">
-                                <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                                <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="collection-content text-center">
-                            <h4><a href="shop-details.html">Rooibos Pet Food Supple</a></h4>
-                            <div class="price">
-                                <h6>$75.00</h6>
-                                <del>$80.00</del>
-                            </div>
-                            <div class="review">
-                                <ul>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                    <li><i class="bi bi-star-fill"></i></li>
-                                </ul>
-                                <span>(50)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -239,7 +118,7 @@
                             <div class="checkbox-container">
                                 <label class="containerss">
                                     1 Yaşdan Küçük
-                                    <input type="checkbox"  data-filter="age" value="0">
+                                    <input type="checkbox" data-filter="age" value="0">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="containerss">
@@ -266,16 +145,6 @@
                         </div>
                     </div>
                     <div class="shop-widget">
-                        <h5 class="shop-widget-title">Fiyat Aralığı</h5>
-                        <div class="range-widget">
-                            <div id="slider-range" class="price-filter-range"></div>
-                            <div class="mt-25 d-flex justify-content-between gap-4">
-                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='500');" id="min_price" class="price-range-field" />
-                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='20000');" id="max_price" class="price-range-field" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="shop-widget">
                         <div class="check-box-item">
                             <h5 class="shop-widget-title">Kimden</h5>
                             <div class="checkbox-container">
@@ -289,6 +158,16 @@
                                     <input type="checkbox" id="sahibindenCheckbox">
                                     <span class="checkmark"></span>
                                 </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-widget">
+                        <h5 class="shop-widget-title">Fiyat Aralığı</h5>
+                        <div class="range-widget">
+                            <div id="slider-range" class="price-filter-range"></div>
+                            <div class="mt-25 d-flex justify-content-between gap-4">
+                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='500');" id="min_price" class="price-range-field" />
+                                <input type="number" min="500" max="20000" oninput="validity.valid||(value='20000');" id="max_price" class="price-range-field" />
                             </div>
                         </div>
                     </div>
@@ -340,7 +219,7 @@
                     </div>
                 </div>
                 <div class="row g-4 justify-content-center">
-                    @for (int i = 0; i < 5; i++)
+                    @for (int i = 0; i < 3; i++)
                     {
                         @foreach (var advert in Model.Adverts)
                         {
@@ -352,10 +231,9 @@
                                             <div class="plus-icon">
                                                 <i class="bi bi-plus"></i>
                                             </div>
-                                            <a href="/AdvertDetail/AdvertDetail">View Details</a>
+                                            <a href="/AdvertDetail/AdvertDetail">İlan Detayı</a>
                                         </div>
                                         <ul class="cart-icon-list">
-                                            <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
                                             <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
                                         </ul>
                                     </div>

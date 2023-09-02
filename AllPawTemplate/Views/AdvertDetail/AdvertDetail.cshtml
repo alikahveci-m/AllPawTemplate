@@ -12,7 +12,7 @@
             border-collapse: collapse;
             width: 100%;
             border: 1px solid gray;
-            border-top: 3px solid black;
+            border-top: 5px solid red;
         }
 
             .tblüst th, .tblüst td {
@@ -30,7 +30,7 @@
             border-collapse: collapse;
             width: 100%;
             border: 1px solid gray;
-            border-bottom: 3px solid black;
+            border-bottom: 5px solid red;
         }
 
             .tblalt th, .tblalt td {
@@ -47,7 +47,7 @@
             border-collapse: collapse;
             width: 100%;
             border: 1px solid gray;
-            border-bottom: 3px solid black;
+            border-bottom: 5px solid red;
         }
 
             .tblortasag th, .tblortasag td {
@@ -99,8 +99,8 @@
             position: absolute;
             top: 140px;
             left: 130px;
-            z-index: 1; /* Diğer içeriklerin üzerine gelecek */
-            pointer-events: none; /* Tıklamaları engelle */
+            z-index: 1;
+            pointer-events: none;
         }
 
             .watermark img {
@@ -109,25 +109,25 @@
             }
 
         .nav-link img {
-            max-width: 100%; /* Resim maksimum genişlik olarak butonun içine sığacak */
-            max-height: 100px; /* Resim maksimum yükseklik olarak 100 piksel */
+            max-width: 100%;
+            max-height: 100px;
         }
 
         .pati-button {
-            border: none; 
-             background: none;
-             cursor: pointer;
-         }
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
 
-         #patigeriButton img,
-         #patiileriButton img {
-             border-radius: 50%;
-             width: 75px;
-             height: 75px; 
-         }
+        #patigeriButton img,
+        #patiileriButton img {
+            border-radius: 50%;
+            width: 75px;
+            height: 75px;
+        }
 
-         #patiileriButton img {
-             float: right; 
+        #patiileriButton img {
+            float: right;
         }
 
         #patigeriButton:hover, #patiileriButton:hover {
@@ -138,15 +138,27 @@
 <div class="container">
     <div class="row">
         <div class="col-md-1">
-            <button onclick="/AdvertDetail/AdvertDetail?advertId=@Model.Advert.AdvertId - 1" id="patigeriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(-90deg)" alt="Geri"></button>
-        </div>
-        <div class="col-md-10">
+            <button onclick="goToAdvert(@Model.Advert.AdvertId - 1)" id="patigeriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(-90deg)" alt="Geri"></button>
         </div>
         <div class="col-md-1">
-            <button onclick="/AdvertDetail/AdvertDetail?advertId=@Model.Advert.AdvertId + 1" id="patiileriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(90deg)" alt="İeri"></button>
+            <center>Önceki İlan</center>
+        </div>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-1">
+            <center>Sonraki İlan</center>
+        </div>
+        <div class="col-md-1">
+            <button onclick="goToAdvert(@Model.Advert.AdvertId + 1)" id="patiileriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(90deg)" alt="İleri"></button>
         </div>
     </div>
 </div>
+
+<script>
+    function goToAdvert(advertId) {
+        window.location.href = "/AdvertDetail/AdvertDetail?advertId=" + advertId;
+    }
+</script>
 <div class="shop-details-page pt-100 mb-120">
     <div class="container">
         <div class="row g-lg-4 gy-5 mb-120">
@@ -155,7 +167,7 @@
                 <div class="tab-content tab-content1" style="background-image:linear-gradient(to right,#f9d1e1,#f8dfbc)" id="v-pills-tabContent">
                     <div class="tab-pane fade active show" id="v-pills-img1" role="tabpanel" aria-labelledby="v-pills-img1-tab">
                         <img class="img-fluid" src="@Model.Advert.AdvertPhoto" width="341" height="717" alt="">
-                    </div>                    
+                    </div>
                     <div class="tab-pane fade" id="v-pills-img2" role="tabpanel" aria-labelledby="v-pills-img2-tab">
                         <img class="img-fluid" src="~/html-files/assets/images/bg/shop-big-02.png" alt="">
                     </div>
@@ -169,9 +181,9 @@
                         <img class="img-fluid" src="~/html-files/assets/images/bg/shop-big-05.png" alt="">
                     </div>
                 </div>
-                <div class="watermark">
-                    <img class="watermark" src="~/HPimage/HpLogo.png" />
-                </div>
+                @* <div class="watermark">
+                <img class="watermark" src="~/HPimage/hepsipati-red.png" />
+                </div> *@
                 <div class="nav nav1 nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="v-pills-img1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-img1" type="button" role="tab" aria-controls="v-pills-img1" aria-selected="true">
                         <img src="@Model.Advert.AdvertPhoto" alt="">
@@ -204,15 +216,15 @@
                     </tr>
                     <tr>
                         <td><b>İlon No</b></td>
-                        <td><b><font size="3">: </font> </b>@Model.Advert.AdvertId</td>
+                        <td><b><font size="4">: </font> </b>@Model.Advert.AdvertId</td>
                     </tr>
                     <tr>
                         <td><b>Türü</b></td>
-                        <td><b><font size="3">: </font> </b>@Model.Advert.CategoryName</td>
+                        <td><b><font size="4">: </font> </b>@Model.Advert.CategoryName</td>
                     </tr>
                     <tr>
                         <td><b>Yaşı</b></td>
-                        <td><b><font size="3">: </font> </b>@Model.Advert.Year Yaşında</td>
+                        <td><b><font size="4">: </font> </b>@Model.Advert.Year Yaşında</td>
                     </tr>
                     <tr>
                         <td><b>Cinsiyeti</b></td>
@@ -223,10 +235,63 @@
                         <td><b><font size="4">: </font> </b>@Model.Advert.CreationDate</td>
                     </tr>
                     <tr>
+                        <td><b>İlanın Kalan Süresi</b></td>
+                        <td><b><font size="4">: </font> </b>7 Gün</td>
+                    </tr>
+                    <tr>
                         <td><b>Görüntülenme Sayısı</b></td>
                         <td><b><font size="4">: </font> </b>@Model.Advert.ViewCount</td>
                     </tr>
                 </table>
+                <style>
+                    .count-button body {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        margin: 0;
+                        background-color: #f0f0f0;
+                    }
+
+                    .count-button {
+                        font-size: 24px;
+                        padding: 10px 20px;
+                        border: none;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                        color: white;
+                    }
+
+                        .count-button:hover {
+                            background-color: #007BFF;
+                            color: white;
+                        }
+
+                </style>
+                <center><button id="countButton" class="count-button">1</button></center>
+                <script>
+                    const countButton = document.getElementById("countButton");
+                    let count = @Model.Advert.ViewCount;
+                    let sayi = 100;
+                    function increaseCount() {
+                        if (count < sayi) {
+                            count++;
+                            countButton.innerHTML = count;
+                            if (count < 30) {
+                                setTimeout(increaseCount, 60);
+                            }
+                            else
+                                if (count < 60) {
+                                    setTimeout(increaseCount, 30);
+                                }
+                                else {
+                                    setTimeout(increaseCount, 10);
+                                }
+                        }
+                    }
+
+                    increaseCount();
+                </script>
             </div>
             <div class="col-lg-2">
                 <table class="tblüst">
@@ -234,10 +299,10 @@
                         <th><center>İlan Sahibi Bilgileri</center></th>
                     </tr>
                 </table>
-
-
                 <table class="tblortasag">
-
+                    <tr>
+                        <td><center><i class="fas fa-calendar"></i><b>Üyelik Tarihi</b> <br /> @Model.User.RegistrationDate</center></td>
+                    </tr>
                     <tr>
                         <th><center><img src="@Model.User.ProfilePhoto" width="100" height="100" style="border-color:black 3px solid" /></center></th>
 
@@ -246,21 +311,14 @@
                         <td><b>@Model.User.FirstName @Model.User.LastName</b></td>
 
                     </tr>
-
                 </table>
                 <br />
-
                 <table class="tblaltssag">
                     <tr>
                         <th><center><i>Mesaj Atmak için !</i><button class="image-button"><img src="~/HPimage/WhatsApp2.png" width="160" height="40" /></button></center></th>
                     </tr>
                 </table>
                 <br />
-                <table class="tblaltssag">
-                    <tr>
-                        <th><i class="fa fa-exclamation-circle" aria-hidden="true"></i>@Model.Advert.CreationDate</th>
-                    </tr>
-                </table>
             </div>
         </div>
         <div class="row mb-120">
@@ -398,42 +456,44 @@
                 </div>
             </div>
         </div>
-        @foreach (var advert in Model.User.Adverts)
-        {
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="collection-card">
-                    <div class="collection-img" style="background-color:white">
-                        <img class="img-gluid" src="@advert.AdvertPhoto" width="213" , height="213" alt="">
-                        <div class="view-dt-btn">
-                            <div class="plus-icon">
-                                <i class="bi bi-plus"></i>
+        <div class="row">
+            @foreach (var advert in Model.User.Adverts)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="collection-card">
+                        <div class="collection-img" style="background-color:white">
+                            <img class="img-gluid" src="@advert.AdvertPhoto" width="213" height="213" alt="">
+                            <div class="view-dt-btn">
+                                <div class="plus-icon">
+                                    <i class="bi bi-plus"></i>
+                                </div>
+                                <a href="/AdvertDetail/AdvertDetail">İlan Detayı</a>
                             </div>
-                            <a href="/AdvertDetail/AdvertDetail">View Details</a>
-                        </div>
-                        <ul class="cart-icon-list">
-                            <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                            <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="collection-content text-center">
-                        <h4><a href="/AdvertDetail/AdvertDetail?advertId=@advert.AdvertId">@advert.Title</a></h4>
-                        <div class="price">
-                            <h6>@advert.Price.ToString("N").Replace(",00", "")</h6>
-                        </div>
-                        <div class="review">
-                            <ul>
-                                <li><i class="bi bi-star-fill"></i></li>
-                                <li><i class="bi bi-star-fill"></i></li>
-                                <li><i class="bi bi-star-fill"></i></li>
-                                <li><i class="bi bi-star-fill"></i></li>
-                                <li><i class="bi bi-star-fill"></i></li>
+                            <ul class="cart-icon-list">
+                                <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
                             </ul>
-                            <span>Oylama Sayısı</span>
+                        </div>
+                        <div class="collection-content text-center">
+                            <h4><a href="/AdvertDetail/AdvertDetail?advertId=@advert.AdvertId">@advert.Title</a></h4>
+                            <div class="price">
+                                <h6>@advert.Price.ToString("N").Replace(",00", "")</h6>
+                            </div>
+                            <div class="review">
+                                <ul>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                </ul>
+                                <span>Oylama Sayısı</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+
     </div>
 </div>
 

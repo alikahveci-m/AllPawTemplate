@@ -25,6 +25,7 @@ namespace AllPawTemplate.Services.HomeService
             var response = new HomeResponse
             {
                 Adverts = await _advertRepository.GetAllAdvertAsync(),
+                VitrineAdverts = await _advertRepository.GetAllVitrineAdvertAsync(),
                 Cities = await _cityRepository.GetAllCityAsync(),
                 Categories = await _categoryRepository.GetAllCategoryAsync()
             };
@@ -47,6 +48,7 @@ namespace AllPawTemplate.Services.HomeService
             var response = new HomeResponse
             {
                 Adverts = await _advertRepository.GetAllAdvertAfterFilterAsync(filterList),
+                VitrineAdverts = await _advertRepository.GetAllVitrineAdvertAsync(),
                 Cities = await _cityRepository.GetAllCityAsync(),
                 Categories = await _categoryRepository.GetAllCategoryAsync()
             };

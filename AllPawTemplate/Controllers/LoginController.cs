@@ -24,7 +24,7 @@ namespace AllPawTemplate.Controllers
         {
             var response = _loginService.LoginAsync(loginModel);
 
-            return RedirectToAction("LoggedIn"); // Örnek olarak giriş başarılıysa LoggedIn adlı bir View'e yönlendirilebilir.
+            return RedirectToAction("Index","Home"); // Örnek olarak giriş başarılıysa LoggedIn adlı bir View'e yönlendirilebilir.
         }
 
         public IActionResult LoggedIn()

@@ -21,7 +21,7 @@ namespace AllPawTemplate.Services.SignupService
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserType = user.AcceptPetShopTerms == true ? 1 : 0,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password),
+                PasswordHash = user.Password,//BCrypt.Net.BCrypt.HashPassword(user.Password),
                 RegistrationDate = DateTime.Now,
                 PackageType = 0,
                 PhoneNumber = null,

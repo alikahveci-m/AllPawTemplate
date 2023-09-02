@@ -1,5 +1,4 @@
 ﻿using AllPawTemplate.Dtos;
-using AllPawTemplate.Models;
 using AllPawTemplate.Services.HomeService;
 using Microsoft.AspNetCore.Mvc;
 

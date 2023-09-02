@@ -15,7 +15,7 @@ namespace AllPawTemplate.Repositories.CategoryRepository
 
         public async Task<List<Category>> GetAllCategoryAsync()
         {
-            string query = "Select * From [AllPawTemplate].[dbo].[Category]";
+            string query = "Select * From [AllPawTemplate].[dbo].[Category] ORDER BY [CategoryName] ASC";
 
             using (var connection = _context.CreateConnection())
             {

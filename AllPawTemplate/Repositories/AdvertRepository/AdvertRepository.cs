@@ -25,6 +25,17 @@ namespace AllPawTemplate.Repositories.AdvertRepository
             }
         }
 
+        public async Task<List<Advert>> GetAllVitrineAdvertAsync()
+        {
+            string query = "Select * From [AllPawTemplate].[dbo].[Advert] WHERE Vitrine = 1";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<Advert>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<List<Advert>> GetAllAdvertAfterFilterAsync(List<int> filters)
         {
             string filterString = string.Join(",", filters);

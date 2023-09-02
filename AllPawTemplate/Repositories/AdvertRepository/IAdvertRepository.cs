@@ -6,6 +6,7 @@ namespace AllPawTemplate.Repositories.AdvertRepository
     {
         void UpdateViewCount(int advertId);
         Task<List<Advert>> GetAllAdvertAsync();
+        Task<List<Advert>> GetAllVitrineAdvertAsync();
         Task<Advert> GetAdvertByIdAsync(int advertId);
         Task<List<Advert>> GetUserAdvertsByIdAsync(int userId);
         Task<List<Advert>> GetAllAdvertAfterFilterAsync(List<int> filters);
