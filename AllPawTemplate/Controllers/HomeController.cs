@@ -23,17 +23,24 @@ namespace AllPawTemplate.Controllers
         [HttpPost]
         public async Task<IActionResult> ApplyFilters([FromBody] FilterDto filters)
         {
-            var filteredAdverts = new HomeResponse();
+            var filteredAdverts = await _homeService.GetHomeAfterFilter(filters.Breeds);
+            return RedirectToAction("FilteredAdverts", filters);
+        }
 
-            if (filters.Breeds.Any())
-            {
-                filteredAdverts = await _homeService.GetHomeAfterFilter(filters.Breeds);
-                return Json(filteredAdverts);
-            }
+        public async Task<IActionResult> FilteredAdverts(FilterDto filters)
+        {
+            var filteredAdverts = await _homeService.GetHomeAfterFilter(filters.Breeds);
+            return View(filteredAdverts);
+        }
 
-            filteredAdverts = await _homeService.GetHome();
+        public IActionResult PopupSuccess()
+        {
+            return View();
+        }
 
-            return Json(filteredAdverts);
+        public IActionResult PopupError()
+        {
+            return View();
         }
 
         public IActionResult CreateAdvert()

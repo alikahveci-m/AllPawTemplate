@@ -112,9 +112,42 @@
             max-width: 100%; /* Resim maksimum genişlik olarak butonun içine sığacak */
             max-height: 100px; /* Resim maksimum yükseklik olarak 100 piksel */
         }
+
+        .pati-button {
+            border: none; 
+             background: none;
+             cursor: pointer;
+         }
+
+         #patigeriButton img,
+         #patiileriButton img {
+             border-radius: 50%;
+             width: 75px;
+             height: 75px; 
+         }
+
+         #patiileriButton img {
+             float: right; 
+        }
+
+        #patigeriButton:hover, #patiileriButton:hover {
+            transform: scale(0.9);
+        }
     </style>
 </head>
-<div class="shop-details-page pt-120 mb-120">
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+            <button onclick="/AdvertDetail/AdvertDetail?advertId=@Model.Advert.AdvertId - 1" id="patigeriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(-90deg)" alt="Geri"></button>
+        </div>
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-1">
+            <button onclick="/AdvertDetail/AdvertDetail?advertId=@Model.Advert.AdvertId + 1" id="patiileriButton" class="pati-button">  <img src="~/HPimage/scroll-button.png" style="transform:rotate(90deg)" alt="İeri"></button>
+        </div>
+    </div>
+</div>
+<div class="shop-details-page pt-100 mb-120">
     <div class="container">
         <div class="row g-lg-4 gy-5 mb-120">
             <div class="col-lg-7">
