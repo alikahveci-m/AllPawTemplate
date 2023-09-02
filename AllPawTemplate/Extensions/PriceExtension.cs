@@ -4,7 +4,7 @@
     {
         public static string FormatAsPrice(this decimal value)
         {
-            return value.ToString("N");
+            return value.ToString("N").Replace(",00", "");
         }
     }
 }

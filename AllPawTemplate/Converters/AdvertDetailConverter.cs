@@ -18,7 +18,7 @@ namespace AllPawTemplate.Converters
                 CityId = advert.CityId,
                 CityName = city.CityName,
                 CountryName = "",
-                CreationDate = advert.CreationDate,
+                CreationDate = advert.CreationDate.ToCustomDateString(),
                 Description = advert.Description,
                 Gender = advert.Gender,
                 Price = advert.Price,
@@ -29,6 +29,26 @@ namespace AllPawTemplate.Converters
                 ViewCount = advert.ViewCount,
                 Vitrine = advert.Vitrine,
                 Year = advert.Year
+            };
+
+            return response;
+        }
+
+        public static UserAdvertDto UserDetail(User user, List<Advert> adverts)
+        {
+            var response = new UserAdvertDto
+            {
+                Adverts = adverts,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PackageType = user.PackageType,
+                PasswordHash = user.PasswordHash,
+                PhoneNumber = user.PhoneNumber,
+                ProfilePhoto = user.ProfilePhoto,
+                RegistrationDate = user.RegistrationDate.ToCustomDateString(),
+                UserId = user.UserId,
+                UserType = user.UserType,
             };
 
             return response;

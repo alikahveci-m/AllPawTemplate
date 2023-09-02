@@ -37,13 +37,24 @@ namespace AllPawTemplate.Services.AdvertDetailService
             var images = await _imageRepository.GetImagesByAdvertIdAsync(advertId);
             var category = await _categoryRepository.GetCategoryByAdvertIdAsync(advertId);
 
+            var userAdverts = await _advertRepository.GetUserAdvertsByIdAsync(advertId);
+            var userOtherAdverts = userAdverts.Where(x => x.AdvertId != advertId).ToList();
+
+
+            UpdateAdvertViewCount(advertId);
+
             var response = new DetailResponse
             {
                 Advert = AdvertDetailConverter.AdvertDetail(advert, city, images, category),
-                User = user,
+                User = AdvertDetailConverter.UserDetail(user, userOtherAdverts),
             };
                 
             return response;
+        }
+
+        private void UpdateAdvertViewCount(int advertId)
+        {
+            _advertRepository.UpdateViewCount(advertId);
         }
     }
 }

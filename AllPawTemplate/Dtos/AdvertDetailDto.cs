@@ -18,8 +18,8 @@
         public string FormattedPrice { get; set; }
         public string CityName { get; set; }
         public string CountryName { get; set; }
+        public string CreationDate { get; set; }
         public List<string> SubImages { get; set; }
         public decimal Price { get; set; }
-        public DateTime CreationDate { get; set; }
     }
 }

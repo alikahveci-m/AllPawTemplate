@@ -1,4 +1,5 @@
 ﻿using AllPawTemplate.Dtos;
+using AllPawTemplate.Models;
 using AllPawTemplate.Services.HomeService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,16 @@ namespace AllPawTemplate.Controllers
         [HttpPost]
         public async Task<IActionResult> ApplyFilters([FromBody] FilterDto filters)
         {
-            var filteredAdverts = await _homeService.GetHome();
+            var filteredAdverts = new HomeResponse();
+
+            if (filters.Breeds.Any())
+            {
+                filteredAdverts = await _homeService.GetHomeAfterFilter(filters.Breeds);
+                return Json(filteredAdverts);
+            }
+
+            filteredAdverts = await _homeService.GetHome();
+
             return Json(filteredAdverts);
         }
 

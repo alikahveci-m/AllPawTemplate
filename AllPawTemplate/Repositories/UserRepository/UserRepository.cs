@@ -27,15 +27,14 @@ namespace AllPawTemplate.Repositories.UserRepository
 
         public async void CreateUser(User user)
         {
-            string query = @"INSERT INTO dbo.[User] (UserType, PackageType, Username, Email, PasswordHash, FirstName, LastName, ProfilePhoto, PhoneNumber, RegistrationDate)
-                     VALUES (@UserType, @PackageType, @Username, @Email, @PasswordHash, @FirstName, @LastName, @ProfilePhoto, @PhoneNumber, @RegistrationDate)";
+            string query = @"INSERT INTO dbo.[User] (UserType, PackageType, Email, PasswordHash, FirstName, LastName, ProfilePhoto, PhoneNumber, RegistrationDate)
+                     VALUES (@UserType, @PackageType, @Email, @PasswordHash, @FirstName, @LastName, @ProfilePhoto, @PhoneNumber, @RegistrationDate)";
             using (var connection = _context.CreateConnection())
             {
                 var paramaters = new DynamicParameters();
 
                 paramaters.Add("@UserType", user.UserType);
                 paramaters.Add("@PackageType", user.PackageType);
-                paramaters.Add("@Username", user.Username);
                 paramaters.Add("@Email", user.Email);
                 paramaters.Add("@PasswordHash", user.PasswordHash);
                 paramaters.Add("@FirstName", user.FirstName);
@@ -68,7 +67,6 @@ namespace AllPawTemplate.Repositories.UserRepository
         public async Task<User> GetUserByAdvertId(int advertId)
         {
             string query = @"SELECT
-                u.[Username], 
                 u.[Email], 
                 u.[PasswordHash], 
                 u.[FirstName], 

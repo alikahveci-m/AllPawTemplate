@@ -24,7 +24,6 @@ namespace AllPawTemplate.Services.SignupService
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password),
                 RegistrationDate = DateTime.Now,
                 PackageType = 0,
-                Username = null,
                 PhoneNumber = null,
                 ProfilePhoto = null,
             };

@@ -108,6 +108,10 @@
                 transform: rotate(-35deg);
             }
 
+        .nav-link img {
+            max-width: 100%; /* Resim maksimum genişlik olarak butonun içine sığacak */
+            max-height: 100px; /* Resim maksimum yükseklik olarak 100 piksel */
+        }
     </style>
 </head>
 <div class="shop-details-page pt-120 mb-120">
@@ -116,10 +120,9 @@
             <div class="col-lg-7">
 
                 <div class="tab-content tab-content1" style="background-image:linear-gradient(to right,#f9d1e1,#f8dfbc)" id="v-pills-tabContent">
-
                     <div class="tab-pane fade active show" id="v-pills-img1" role="tabpanel" aria-labelledby="v-pills-img1-tab">
-                        <img class="img-fluid" src="@Model.Advert.AdvertPhoto" alt="">
-                    </div>
+                        <img class="img-fluid" src="@Model.Advert.AdvertPhoto" width="341" height="717" alt="">
+                    </div>                    
                     <div class="tab-pane fade" id="v-pills-img2" role="tabpanel" aria-labelledby="v-pills-img2-tab">
                         <img class="img-fluid" src="~/html-files/assets/images/bg/shop-big-02.png" alt="">
                     </div>
@@ -138,10 +141,10 @@
                 </div>
                 <div class="nav nav1 nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="v-pills-img1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-img1" type="button" role="tab" aria-controls="v-pills-img1" aria-selected="true">
-                        <img src="~/html-files/assets/images/bg/shop-sm-01.png" alt="">
+                        <img src="@Model.Advert.AdvertPhoto" alt="">
                     </button>
                     <button class="nav-link" id="v-pills-img2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-img2" type="button" role="tab" aria-controls="v-pills-img2" aria-selected="false">
-                        <img src="~/html-files/assets/images/bg/shop-sm-02.png" alt="">
+                        <img src="@Model.Advert.AdvertPhoto" alt="">
                     </button>
                     <button class="nav-link" id="v-pills-img3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-img3" type="button" role="tab" aria-controls="v-pills-img3" aria-selected="false">
                         <img src="~/html-files/assets/images/bg/shop-sm-03.png" alt="">
@@ -158,26 +161,25 @@
             <div class="col-lg-3">
                 <table class="tblüst">
                     <tr>
-                        <th><center>@Model.User.FirstName @Model.User.LastName</center></th>
+                        <th><center>İlan Detayları</center></th>
                     </tr>
                 </table>
-
                 <table class="tblalt">
                     <tr>
-                        <th>İlan</th>
-                        <th>Detayları</th>
+                        <td><b>Fiyat</b></td>
+                        <td><b><font size="4">: </font> </b>@Model.Advert.FormattedPrice</td>
                     </tr>
                     <tr>
                         <td><b>İlon No</b></td>
-                        <td><b><font size="4">: </font> </b>@Model.Advert.AdvertId</td>
+                        <td><b><font size="3">: </font> </b>@Model.Advert.AdvertId</td>
                     </tr>
                     <tr>
                         <td><b>Türü</b></td>
-                        <td><b><font size="4">: </font> </b>@Model.Advert.CategoryId</td>
+                        <td><b><font size="3">: </font> </b>@Model.Advert.CategoryName</td>
                     </tr>
                     <tr>
                         <td><b>Yaşı</b></td>
-                        <td><b><font size="4">: </font> </b>@Model.Advert.Year Yaşında</td>
+                        <td><b><font size="3">: </font> </b>@Model.Advert.Year Yaşında</td>
                     </tr>
                     <tr>
                         <td><b>Cinsiyeti</b></td>
@@ -185,7 +187,11 @@
                     </tr>
                     <tr>
                         <td><b>İlan Tarihi</b></td>
-                        <td><b><font size="4">: </font> </b>@Model.Advert.CreationDate.ToShortDateString()</td>
+                        <td><b><font size="4">: </font> </b>@Model.Advert.CreationDate</td>
+                    </tr>
+                    <tr>
+                        <td><b>Görüntülenme Sayısı</b></td>
+                        <td><b><font size="4">: </font> </b>@Model.Advert.ViewCount</td>
                     </tr>
                 </table>
             </div>
@@ -204,11 +210,7 @@
 
                     </tr>
                     <tr>
-                        <td><b>@Model.User.FirstName</b></td>
-
-                    </tr>
-                    <tr>
-                        <td><b>@Model.User.LastName</b></td>
+                        <td><b>@Model.User.FirstName @Model.User.LastName</b></td>
 
                     </tr>
 
@@ -363,49 +365,42 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="swiper essential-items-slider">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="collection-card">
-                            <div class="offer-card">
-                                <span>Offer</span>
+        @foreach (var advert in Model.User.Adverts)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="collection-card">
+                    <div class="collection-img" style="background-color:white">
+                        <img class="img-gluid" src="@advert.AdvertPhoto" width="213" , height="213" alt="">
+                        <div class="view-dt-btn">
+                            <div class="plus-icon">
+                                <i class="bi bi-plus"></i>
                             </div>
-                            <div class="collection-img">
-                                <img class="img-gluid" src="~/html-files/assets/images/bg/category/h3-collection-01.png" alt="">
-                                <div class="view-dt-btn">
-                                    <div class="plus-icon">
-                                        <i class="bi bi-plus"></i>
-                                    </div>
-                                    <a href="shop-details.html">View Details</a>
-                                </div>
-                                <ul class="cart-icon-list">
-                                    <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
-                                    <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
-                                </ul>
-                            </div>
-                            <div class="collection-content text-center">
-                                <h4><a href="shop-details.html">Whiskas Cat Food Core Tuna</a></h4>
-                                <div class="price">
-                                    <h6>$25.00</h6>
-                                    <del>$30.00</del>
-                                </div>
-                                <div class="review">
-                                    <ul>
-                                        <li><i class="bi bi-star-fill"></i></li>
-                                        <li><i class="bi bi-star-fill"></i></li>
-                                        <li><i class="bi bi-star-fill"></i></li>
-                                        <li><i class="bi bi-star-fill"></i></li>
-                                        <li><i class="bi bi-star-fill"></i></li>
-                                    </ul>
-                                    <span>(50)</span>
-                                </div>
-                            </div>
+                            <a href="/AdvertDetail/AdvertDetail">View Details</a>
+                        </div>
+                        <ul class="cart-icon-list">
+                            <li><a href="cart.html"><img src="~/html-files/assets/images/icon/Icon-cart3.svg" alt=""></a></li>
+                            <li><a href="#"><img src="~/html-files/assets/images/icon/Icon-favorites3.svg" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="collection-content text-center">
+                        <h4><a href="/AdvertDetail/AdvertDetail?advertId=@advert.AdvertId">@advert.Title</a></h4>
+                        <div class="price">
+                            <h6>@advert.Price.ToString("N").Replace(",00", "")</h6>
+                        </div>
+                        <div class="review">
+                            <ul>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                            </ul>
+                            <span>Oylama Sayısı</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </div>
 

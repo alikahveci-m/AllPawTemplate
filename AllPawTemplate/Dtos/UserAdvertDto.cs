@@ -1,6 +1,8 @@
-﻿namespace AllPawTemplate.Enitities
+﻿using AllPawTemplate.Enitities;
+
+namespace AllPawTemplate.Dtos
 {
-    public class User
+    public class UserAdvertDto
     {
         public int UserId { get; set; }
         public int UserType { get; set; }
@@ -10,7 +12,8 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ProfilePhoto { get; set; }
-        public string  PhoneNumber { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public string PhoneNumber { get; set; }
+        public string RegistrationDate { get; set; }
+        public List<Advert> Adverts { get; set; }
     }
 }
